@@ -1,0 +1,36 @@
+﻿@model EFPractice1.Models.Empleado
+
+@{
+    ViewBag.Title = "CrearEmpleado";
+}
+
+<h2>CrearEmpleado</h2>
+<hr />
+
+@using (Html.BeginForm("CrearNuevoEmpleado", "Home")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+
+    @Html.HiddenFor(m => m.Id);
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre)
+        @Html.EditorFor(m => m.Nombre, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Nombre, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Apellido)
+        @Html.EditorFor(m => m.Apellido, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Apellido, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Edad)
+        @Html.EditorFor(m => m.Edad, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Edad, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sueldo)
+        @Html.EditorFor(m => m.Sueldo, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Sueldo, null, new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Crear" class="btn btn-primary" />
+}

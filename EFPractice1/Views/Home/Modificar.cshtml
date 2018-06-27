@@ -1,0 +1,37 @@
+﻿@model EFPractice1.Models.Empleado
+
+@{
+    ViewBag.Title = "Modificar";
+}
+
+<h2>Modificar</h2>
+<hr />
+
+@using (Html.BeginForm("ModificarEmpleado", "Home")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+
+    @Html.HiddenFor(m => m.Id);
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre)
+        @Html.EditorFor(m => m.Nombre, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Nombre) })
+        @Html.ValidationMessageFor(m => m.Nombre, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Apellido)
+        @Html.EditorFor(m => m.Apellido, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Apellido) })
+        @Html.ValidationMessageFor(m => m.Apellido, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Edad)
+        @Html.EditorFor(m => m.Edad, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Edad) })
+        @Html.ValidationMessageFor(m => m.Edad, null, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sueldo)
+        @Html.EditorFor(m => m.Sueldo, new { @class = "form-control", placeholder = Html.DisplayNameFor(m => m.Sueldo) })
+        @Html.ValidationMessageFor(m => m.Sueldo, null, new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Modificar" class="btn btn-primary" />
+}
+

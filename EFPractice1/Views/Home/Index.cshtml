@@ -1,0 +1,43 @@
+﻿@model  List<EFPractice1.Models.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index - Listado de Empleados</h2>
+<hr />
+
+<a href="/Home/CrearEmpleado/" class="btn btn-primary">Crear empleado</a>
+<a href="/Home/AumentarSueldos/" class="btn btn-default">Aumentar sueldos</a>
+<br />
+
+<table class="table">
+    <thead>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Sueldo</th>
+        <th>Departamento</th>
+        <th>Acciones</th>
+    </thead>
+    <tbody>
+        @if (TempData["mensajeError"] != null) {
+            string msj = TempData["mensajeError"].ToString();
+            <tr>
+                <td>@msj</td>
+            </tr>
+        }else {
+            foreach(var e in Model){
+            <tr>
+                <td>@e.Nombre</td>
+                <td>@e.Apellido</td>
+                <td>@e.Edad</td>
+                <td>$@e.Sueldo</td>
+                <td>@e.Departamento.Nombre</td>
+                <td><a href="/Home/Modificar/@e.Id" class="btn btn-primary">Modificar</a><a href="/Home/Eliminar/@e.Id" class="btn btn-danger">Eliminar</a></td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+
